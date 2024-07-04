@@ -75,3 +75,7 @@
 | Répéter la dernière commande      | `.`                            | Répète la dernière action                                    |
 | Exécuter une macro                | `@{lettre}`                    | Exécute la macro enregistrée dans le registre (ex: `@a`)     |
 | Exécuter une macro plusieurs fois | `nombre@{lettre}`              |
+
+## Renomer le fichier actuel
+
+``:saveas nouveau_nom.txt``
