@@ -1,5 +1,11 @@
 # Installation
 
+## Go to init.vim
+
+``nvim $HOME\AppData\Local\nvim\init.vim``
+
+## Interface vim
+
 ```vim
 " Initialise vim-plug
 call plug#begin('~/.vim/plugged')
