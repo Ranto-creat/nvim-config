@@ -8,7 +8,7 @@
 
 ```vim
 " Initialise vim-plug
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Plugins pour améliorer l'interface
 Plug 'gruvbox-community/gruvbox'          " Thème de couleurs
@@ -26,6 +26,15 @@ Plug 'easymotion/vim-easymotion'          " Navigation rapide
 Plug 'jiangmiao/auto-pairs'               " Auto fermeture des parenthèses
 Plug 'tpope/vim-commentary'               " Commenter facilement le code
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplétion
+
+" Plugins pour le développement web
+Plug 'pangloss/vim-javascript'            " Support JavaScript
+Plug 'MaxMEllon/vim-jsx-pretty'           " Support JSX/React
+Plug 'leafgarland/typescript-vim'         " Support TypeScript
+Plug 'peitalin/vim-jsx-typescript'        " Support TSX
+Plug 'yuezk/vim-js'                       " Autocompletion
+Plug 'HerringtonDarkholme/yats.vim'       " Typescript highlighting
+Plug 'airblade/vim-gitgutter'             " Git integration
 
 call plug#end()
 
@@ -65,8 +74,8 @@ set relativenumber
 set cursorline
 
 " Configurer les onglets et les espaces
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " Activer les caractères invisibles
@@ -131,6 +140,30 @@ inoremap <silent><expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " Use <c-space> to trigger completion
 inoremap <silent><expr> <C-Space> coc#refresh()
 
+" Configurer les extensions Coc
+let g:coc_global_extensions = [
+    \ 'coc-tsserver',       " TypeScript/JavaScript language server
+    \ 'coc-json',           " JSON language server
+    \ 'coc-html',           " HTML language server
+    \ 'coc-css',            " CSS language server
+    \ 'coc-prettier',       " Prettier for auto-formatting
+    \ 'coc-eslint'          " ESLint for linting
+    \ ]
+
+" Configurer ShaDa pour éviter les problèmes futurs
+set shada='!,'  " Sauvegarder les entrées d'historique et de marque-page seulement
+
+" Commande pour sauvegarder et quitter
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+
+" Autocommandes pour améliorer l'expérience utilisateur
+" Ouvrir NERDTree automatiquement au démarrage
+autocmd VimEnter * if !argc() | NERDTree | endif
+" Fermer Vim si NERDTree est le seul buffer restant
+autocmd bufenter * if winnr('$') == 1 && getbufvar(winbufnr(1), '&filetype') ==# 'nerdtree' && argc() == 0 | quit | endif
+
+
 ```
 
 ## nvim version
@@ -142,4 +175,11 @@ Build type: Release
 LuaJIT 2.1.1713484068
 Run "nvim -V1 -v" for more info
 PS C:\Users\Ranto>
+````
+
+## vim-plug
+
+````vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ````
