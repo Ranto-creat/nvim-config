@@ -1,6 +1,23 @@
 # Installation
 
-## Go to init.vim
+## Install Packer with repo officiel
+
+````powershell
+git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+````
+
+## nvim version
+
+````powershell
+PS C:\Users\Ranto> nvim --version
+NVIM v0.10.0
+Build type: Release
+LuaJIT 2.1.1713484068
+Run "nvim -V1 -v" for more info
+PS C:\Users\Ranto>
+````
+
+## Go to init.lua file
 
 ``nvim $HOME\AppData\Local\nvim\init.lua``
 
@@ -116,7 +133,7 @@ vim.opt.termguicolors = true
 -- Charger le thème Gruvbox  
 vim.cmd[[colorscheme gruvbox]]  
 
--- Couleurs vives pour un meilleur contraste  
+-- Couleurs vives pour un meilleur contraste by Ranto
 vim.api.nvim_set_hl(0, "Normal", {fg="#EAEAEA", bg="#1E1E1E"})  
 vim.api.nvim_set_hl(0, "Comment", {fg="#A6A6A6", bg="NONE", italic=true})  
 vim.api.nvim_set_hl(0, "Identifier", {fg="#FF79C6", bg="NONE"})  
@@ -175,17 +192,6 @@ vim.opt.clipboard = 'unnamedplus'
 -- Configuration de Gruvbox
 vim.g.gruvbox_contrast_dark = 'hard'
 vim.g.gruvbox_invert_selection = 0
-
--- Configuration de la barre d'état lightline
---vim.g.lightline = {
---    colorscheme = 'gruvbox',
---    active = {
---        left = { { 'mode', 'paste' }, { 'readonly', 'filename', 'modified' } }
---    },
---    component_function = {
---        filename = 'LightlineFilename'
---    }
---}
 
 function LightlineFilename()
   return vim.fn.expand('%:t') == '' and '[No Name]' or vim.fn.expand('%:t')
@@ -287,22 +293,16 @@ vim.g.coc_config_home = '~/.config/nvim/coc-settings.json'
 -- augmentation de time out
 vim.cmd('let g:packer_max_jobs = 10')
 
+-- Make amazing in vim By Ranto(wds)
+
 ```
 
-## nvim version
+## Install all Plugins (Packer plugin)
 
 ````vim
-PS C:\Users\Ranto> nvim --version
-NVIM v0.10.0
-Build type: Release
-LuaJIT 2.1.1713484068
-Run "nvim -V1 -v" for more info
-PS C:\Users\Ranto>
+:PackerInstall
+:PackerSync
+:PackerUpdate
 ````
 
-## vim-plug
-
-````vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-````
+============================================ **Make amazing in vim By Ranto(wds)**
