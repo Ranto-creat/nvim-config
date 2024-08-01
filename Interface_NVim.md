@@ -42,10 +42,13 @@ end
 
 ensure_packer()
 
+-- Utiliser une fonction pour configurer le thème après le chargement des plugins
 local function setup_theme()
     vim.opt.background = 'dark'
-    vim.cmd('colorscheme gruvbox')
+    vim.cmd('colorscheme github_dark_default')
 end
+
+setup_theme()
 
 require('packer').startup(function(use)
     -- Packer peut se mettre à jour
@@ -81,6 +84,9 @@ require('packer').startup(function(use)
 
     -- Intégration Git
     use 'tpope/vim-fugitive'
+
+      use("projekt0n/github-nvim-theme")
+
 
     -- Plugins pour les langages spécifiques
     use 'hail2u/vim-css3-syntax'
@@ -127,27 +133,15 @@ vim.opt.relativenumber = true
 -- Activer la coloration syntaxique
 vim.cmd('syntax on')
 
+-- Configurer Lightline
+--vim.g.lightline = {
+--    colorscheme = 'gruvbox',
+--}
+
 -- Activer les couleurs 24 bits  
 vim.opt.termguicolors = true  
 
--- Charger le thème Gruvbox  
-vim.cmd[[colorscheme gruvbox]]  
-
--- Couleurs vives pour un meilleur contraste by Ranto
-vim.api.nvim_set_hl(0, "Normal", {fg="#EAEAEA", bg="#1E1E1E"})  
-vim.api.nvim_set_hl(0, "Comment", {fg="#A6A6A6", bg="NONE", italic=true})  
-vim.api.nvim_set_hl(0, "Identifier", {fg="#FF79C6", bg="NONE"})  
-vim.api.nvim_set_hl(0, "Statement", {fg="#FFB86C", bg="NONE"})  
-vim.api.nvim_set_hl(0, "PreProc", {fg="#8BE9FD", bg="NONE"})  
-vim.api.nvim_set_hl(0, "Type", {fg="#50FA7B", bg="NONE"})  
-vim.api.nvim_set_hl(0, "Constant", {fg="#BD93F9", bg="NONE"})  
-vim.api.nvim_set_hl(0, "Conditional", {fg="#FF5555", bg="NONE"})  
-vim.api.nvim_set_hl(0, "Error", {fg="#FF5555", bg="NONE"})  
-vim.api.nvim_set_hl(0, "CursorLine", {bg="#44475A"})  
-vim.api.nvim_set_hl(0, "LineNr", {fg="#6272A4", bg="NONE"})
-
 -- Configurer vim-airline
-vim.g.airline_theme = 'gruvbox'
 vim.g.airline_powerline_fonts = 1
 vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g['airline#extensions#tabline#formatter'] = 'default'
@@ -189,9 +183,6 @@ vim.opt.incsearch = true
 -- Activer le copier-coller avec le système
 vim.opt.clipboard = 'unnamedplus'
 
--- Configuration de Gruvbox
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.g.gruvbox_invert_selection = 0
 
 function LightlineFilename()
   return vim.fn.expand('%:t') == '' and '[No Name]' or vim.fn.expand('%:t')
